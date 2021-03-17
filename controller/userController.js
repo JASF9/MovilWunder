@@ -41,7 +41,7 @@ exports.registerUser= async (req,res)=>{
                 res.send({errors})
             }
             else{ 
-                const result = await pool.query(`INSERT INTO users (name_user,mail,password)
+                pool.query(`INSERT INTO users (name_user,mail,password)
                 VALUES (${name},${mail},${hashPassword}) RETURNING *`);
                 return res.json({token:token});; 
             }
